@@ -1,0 +1,10 @@
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+.cache/
+app/assets/**/*
+!app/assets/favicon.png
+!app/assets/style.css
+node_modules/
+vendor/
+config/credentials.json
