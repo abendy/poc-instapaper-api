@@ -3,6 +3,10 @@
         "abraham/twitteroauth": "^0.7.2"
     },
     "require-dev": {
-        "raveren/kint": "^1.1"
+        "kint-php/kint": "^3.1",
+        "kint-php/kint-js": "^2.0",
+        "kint-php/kint-twig": "^2.0",
+        "symfony/polyfill-mbstring": "^1.10",
+        "symfony/polyfill-iconv": "^1.10"
     }
 }

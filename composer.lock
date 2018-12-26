@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d819893496ed063b0fabf3885b8d9d64",
+    "content-hash": "b2b39c8a72687f15b2df348039c2fa8b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -63,32 +63,47 @@
     ],
     "packages-dev": [
         {
-            "name": "raveren/kint",
-            "version": "1.1",
+            "name": "kint-php/kint",
+            "version": "3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kint-php/kint.git",
-                "reference": "a8549198558560b24e2879c6bac2875de5371483"
+                "reference": "3228e1162ed4dfdfbaffa8d81e30d38ffdb66054"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kint-php/kint/zipball/a8549198558560b24e2879c6bac2875de5371483",
-                "reference": "a8549198558560b24e2879c6bac2875de5371483",
+                "url": "https://api.github.com/repos/kint-php/kint/zipball/3228e1162ed4dfdfbaffa8d81e30d38ffdb66054",
+                "reference": "3228e1162ed4dfdfbaffa8d81e30d38ffdb66054",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.1.0"
+                "php": ">=5.3.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^4.0",
+                "seld/phar-utils": "^1.0",
+                "symfony/finder": "^2.0 || ^3.0 || ^4.0",
+                "vimeo/psalm": "^2.0"
+            },
+            "suggest": {
+                "ext-ctype": "Simple data type tests",
+                "ext-iconv": "Provides fallback detection for ambiguous legacy string encodings such as the Windows and ISO 8859 code pages",
+                "ext-mbstring": "Provides string encoding detection",
+                "kint-php/kint-js": "Provides a simplified dump to console.log()",
+                "kint-php/kint-twig": "Provides d() and s() functions in twig templates",
+                "symfony/polyfill-ctype": "Replacement for ext-ctype if missing",
+                "symfony/polyfill-iconv": "Replacement for ext-iconv if missing",
+                "symfony/polyfill-mbstring": "Replacement for ext-mbstring if missing"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "files": [
-                    "Kint.class.php"
-                ]
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -97,22 +112,355 @@
             "authors": [
                 {
                     "name": "Rokas Šleinius",
-                    "homepage": "https://github.com/kint-php"
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Jonathan Vollebregt",
+                    "homepage": "https://github.com/jnvsor"
                 },
                 {
                     "name": "Contributors",
-                    "homepage": "https://github.com/kint-php/kint/contributors"
+                    "homepage": "https://github.com/kint-php/kint/graphs/contributors"
                 }
             ],
-            "description": "Kint - debugging helper for PHP developers",
-            "homepage": "https://github.com/kint-php/kint",
+            "description": "Kint - debugging tool for PHP developers",
+            "homepage": "https://kint-php.github.io/kint/",
             "keywords": [
                 "debug",
                 "kint",
                 "php"
             ],
-            "abandoned": "kint-php/kint",
-            "time": "2017-01-15T14:23:43+00:00"
+            "time": "2018-11-30T09:54:22+00:00"
+        },
+        {
+            "name": "kint-php/kint-js",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint-js.git",
+                "reference": "d2455136a19f87aed682bb803790a0f71ad4be41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint-js/zipball/d2455136a19f87aed682bb803790a0f71ad4be41",
+                "reference": "d2455136a19f87aed682bb803790a0f71ad4be41",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^3.0@dev"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "seld/phar-utils": "^1.0",
+                "vimeo/psalm": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "init.php"
+                ],
+                "psr-4": {
+                    "Kint\\Renderer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "email": "jnvsor@gmail.com"
+                }
+            ],
+            "description": "Renderer plugin for Kint that dumps to console.log()",
+            "time": "2018-08-22T17:36:46+00:00"
+        },
+        {
+            "name": "kint-php/kint-twig",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kint-php/kint-twig.git",
+                "reference": "9ff42f0fe6e2ed8abdc664259edee5ed52d6502b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kint-php/kint-twig/zipball/9ff42f0fe6e2ed8abdc664259edee5ed52d6502b",
+                "reference": "9ff42f0fe6e2ed8abdc664259edee5ed52d6502b",
+                "shasum": ""
+            },
+            "require": {
+                "kint-php/kint": "^3.0@dev",
+                "php": ">= 5.3.9",
+                "twig/twig": "^1.34 || ^2.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^4.0",
+                "vimeo/psalm": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kint\\Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Vollebregt",
+                    "email": "jnvsor@gmail.com"
+                }
+            ],
+            "description": "Twig extension for Kint integration",
+            "time": "2018-09-29T07:24:13+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-08-06T14:22:27+00:00"
+        },
+        {
+            "name": "symfony/polyfill-iconv",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-iconv.git",
+                "reference": "97001cfc283484c9691769f51cdf25259037eba2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/97001cfc283484c9691769f51cdf25259037eba2",
+                "reference": "97001cfc283484c9691769f51cdf25259037eba2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-iconv": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Iconv\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Iconv extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "iconv",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2018-09-21T06:26:08+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2018-09-21T13:07:52+00:00"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a11dd39f5b6589e14f0ff3b36675d06047c589b1",
+                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "^1.3"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2018-12-16T10:36:48+00:00"
         }
     ],
     "aliases": [],

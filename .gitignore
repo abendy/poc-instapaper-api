@@ -5,6 +5,5 @@
 app/assets/**/*
 !app/assets/favicon.png
 !app/assets/style.css
-node_modules/
 vendor/
 config/credentials.json
