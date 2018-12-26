@@ -1,0 +1,75 @@
+// Base
+
+@viewport { width: device-width; }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+* {
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+body {
+    background-color: $color-background;
+    color: $color-text;
+    font-family: $font-family-default;
+    font-size: rem(16, $base-font-size);
+    -webkit-font-smoothing: antialiased;
+    line-height: $base-line-height;
+    // overflow: hidden;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+}
+
+#main {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    // height: 100vh;
+    width: 100vw;
+}
+
+a {
+    background: transparent;
+    color: $color-link;
+    font-family: $font-family-default;
+    text-decoration: none;
+    transition: color .2s;
+
+    &:visited {
+        color: $color-link-hover;
+    }
+
+    @include hover {
+        color: $color-link-hover;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-default;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: rem(30);
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    // width: 100%;
+}

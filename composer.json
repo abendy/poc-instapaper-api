@@ -1,6 +1,8 @@
 {
     "require": {
-        "abraham/twitteroauth": "^0.7.2"
+        "abraham/twitteroauth": "^0.7.2",
+        "twig/twig": "^2.6",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "kint-php/kint": "^3.1",

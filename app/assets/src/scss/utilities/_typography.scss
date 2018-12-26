@@ -1,0 +1,47 @@
+// Typography
+
+// $base-font-size
+$base-font-size:            14;
+
+// $base-line-height
+$base-line-height:          1.5;
+
+// Font Stacks
+
+// $typefaces
+//
+// Configuration of webfonts imports.
+//
+// $typefaces - {map}
+// @family - {string}
+// @weight - {integer} or {keyword} i.e. 800, bold
+// @style - {keyword} i.e. normal, italic
+
+//$typefaces: (
+//  'FILENAME': (
+//    family: 'fontname',
+//    weight: 100,
+//    style: normal,
+//  ),
+//);
+
+// External fonts
+$external-fonts: (
+    'https://fonts.googleapis.com/css?family=Roboto',
+    'https://fonts.googleapis.com/icon?family=Material+Icons'
+);
+
+// $font-family-sans
+$font-custom:               'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+// $font-family-sans
+$font-family-sans:          'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+
+// $font-family-serif
+$font-family-serif:         'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+
+// $font-family-monospace
+$font-family-monospace:     'Inconsolata', 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'Courier', monospace;
+
+// $font-family-default
+$font-family-default: $font-family-sans;

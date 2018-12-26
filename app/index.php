@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>poc-instapaper-api</title>
-        <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
 
+        <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="assets/dist/main.css">
     </head>
     <body>
         <?php
@@ -91,5 +92,6 @@
         }
 
         ?>
+        <script defer src="assets/dist/main.js"></script>
     </body>
 </html>
