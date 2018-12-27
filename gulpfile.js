@@ -5,7 +5,10 @@ const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const del = require('del');
 const gulp = require('gulp');
+const notify = require('gulp-notify');
+const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 
 const src = 'app/assets/src/';
@@ -29,13 +32,25 @@ function scripts() {
     .pipe(gulp.dest(dist));
 }
 
+var onError = function(err) {
+    notify.onError({
+        title:    "Gulp",
+        subtitle: "Failure!",
+        message:  "Error: <%= error.message %>"
+    })(err);
+    this.emit('end');
+};
+
 function styles() {
     return gulp.src([
         src + 'scss/style.scss'
     ])
+    .pipe(plumber({errorHandler: onError}))
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('main.css'))
+    .pipe(sourcemaps.write('maps')) //TODO or below cleanCSS() ???
     .pipe(cleanCSS())
     .pipe(gulp.dest(dist))
 }
@@ -49,5 +64,7 @@ const build = gulp.parallel(clean, scripts, styles);
 exports.default = build;
 exports.build = build;
 exports.clean = clean;
+exports.scripts = scripts;
 exports.styles = styles;
+exports.images = images;
 exports.watch = watch;
