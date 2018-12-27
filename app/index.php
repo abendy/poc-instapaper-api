@@ -35,20 +35,22 @@
 
             $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
 
-            // if the `folder_id` url parameter doesn't exist show the folders
+            // show the folders
 
-            $folders = empty($fid) ? $instapaper->post('folders/list') : array();
+            $folders = (array) $instapaper->post('folders/list');
 
             if (!empty($folders)) {
-                foreach($folders as $folder) {
 
-                    $folderArr = (array) $folder;
+                foreach($folders as $i => $folder) {
 
-                    extract($folderArr);
+                    unset($folders[$i]);
 
-                    echo "<a href='?fid=$folder_id'>$display_title</a> | ";
+                    $folders[] = (array) $folder;
 
                 }
+
+                echo $twig->render('nav.twig', array('folders' => $folders));
+
             }
 
             // set the default config for the bookmark listing api call
