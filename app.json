@@ -1,0 +1,22 @@
+{
+    "name": "poc-instapaper-api",
+    "description": "",
+    "keywords": [
+        "heroku",
+        "buildpack",
+        "PHP",
+        "Composer",
+        "npm"
+    ],
+    "website": "",
+    "repository": "",
+    "success_url": "/",
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        },
+        {
+            "url": "heroku/php"
+        }
+    ]
+}
