@@ -4,8 +4,13 @@
     </button>
 
     <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-    {% for folder in folders %}
-        <li class="mdl-menu__item"><a href='?fid={{ folder.folder_id }}'>{{ folder.display_title }}</a></li>
-    {% endfor %}
+        <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
+            <a href="?fid=starred">Starred</a>
+        </li>
+        {% for folder in folders %}
+        <li class="mdl-menu__item">
+            <a href='?fid={{ folder.folder_id }}'>{{ folder.display_title }}</a>
+        </li>
+        {% endfor %}
     </ul>
 </div>
