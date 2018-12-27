@@ -8,7 +8,7 @@
         <title>poc-instapaper-api</title>
 
         <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="assets/dist/main.css">
+        <link rel="stylesheet" href="assets/dist/main.min.css">
     </head>
     <body>
         <?php
@@ -100,6 +100,6 @@
         }
 
         ?>
-        <script defer src="assets/dist/main.js"></script>
+        <script defer src="assets/dist/main.min.js"></script>
     </body>
 </html>

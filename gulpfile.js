@@ -14,6 +14,9 @@ const uglify = require('gulp-uglify');
 const src = 'app/assets/src/';
 const dist = 'app/assets/dist/';
 
+/* Material Design Lite location */
+const mdl = 'node_modules/material-design-lite/';
+
 //////////////////////////////
 // Begin Gulp Tasks
 //////////////////////////////
@@ -27,8 +30,12 @@ function scripts() {
         'node_modules/material-design-lite/dist/material.js',
         src + 'js/app.js'
     ])
-    .pipe(uglify())
+    .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
+    .pipe(gulp.dest(dist))
+    .pipe(uglify())
+    .pipe(concat('main.min.js'))
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(dist));
 }
 
@@ -47,17 +54,19 @@ function styles() {
     ])
     .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'nested'}).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(concat('main.css'))
-    .pipe(sourcemaps.write('maps')) //TODO or below cleanCSS() ???
+    .pipe(gulp.dest(dist))
     .pipe(cleanCSS())
+    .pipe(concat('main.min.css'))
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(dist))
 }
 
 function images() {
     return gulp.src([
-        'node_modules/material-design-lite/dist/images/**/*'
+        mdl + 'dist/images/**/*'
     ])
     .pipe(gulp.dest(dist + 'images'));
 }
