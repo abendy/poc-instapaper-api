@@ -7,10 +7,10 @@ $black:                   #000;
 
 // client colors
 // =============
-$insta-black:             #262626;
-$insta-lightgrey:         #e6e6e6;
-$insta-orange:            #f79851;
-$insta-purple:            #cB3388;
+$instap-black:             #111;
+$instap-darkgrey:          #404040;
+$instap-midgrey:           #7a7a7a;
+$instap-lightgrey:         #ccc;
 
 // main color palette
 // ==================
@@ -20,14 +20,14 @@ $insta-purple:            #cB3388;
 // Common colors
 // =============
 $color-background:          $white;
-$color-text:                $insta-black;
-$color-text-strong:         $insta-black;
-$color-text-heading:        $insta-black;
+$color-text:                $instap-black;
+$color-text-strong:         $instap-black;
+$color-text-heading:        $instap-black;
 $color-text-invert:         $white;
 
 // Links
 // =====
-$color-link:                $insta-black;
+$color-link:                $instap-black;
 $color-link-hover:          $color-link;
 $color-link-visited:        $color-link;
 
