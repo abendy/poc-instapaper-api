@@ -1,0 +1,9 @@
+<ul class="demo-list-item mdl-list">
+{% for bookmark in bookmarks %}
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            <a href='{{ bookmark.url }}' target='_blank'>{{ bookmark.title }}</a>
+        </span>
+    </li>
+{% endfor %}
+</ul>

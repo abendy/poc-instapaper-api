@@ -71,23 +71,25 @@
 
             // make the bookmark listing api call
 
-            $bookmarks = $instapaper->post('bookmarks/list', $parameters);
+            $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
 
-            // show bookmarks
+            // show the bookmarks
 
-            foreach ($bookmarks as $bookmark) {
+            foreach ($bookmarks as $i => $bookmark) {
+
+                unset($bookmarks[$i]);
 
                 $bookmarkArr = (array) $bookmark;
 
                 extract($bookmarkArr);
 
                 if (isset($bookmark_id) && isset($title) && isset($url)) {
-
-                    echo "<p><strong><a href='$url' target='_blank'>$title</a></strong>  (<a href='https://www.instapaper.com/read/$bookmark_id'>paper read</a>)</p>";
-
+                    $bookmarks[] = (array) $bookmark;
                 }
 
             }
+
+            echo $twig->render('bookmarks.twig', array('bookmarks' => $bookmarks));
 
         } catch (TwitterOAuthException $e) {
             d($e);
