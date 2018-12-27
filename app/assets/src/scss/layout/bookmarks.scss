@@ -1,2 +1,17 @@
 // Bookmarks
 
+.paper {
+    color: $instap-midgrey;
+
+    a {
+        color: $instap-midgrey;
+
+        &:visited {
+            color: $instap-midgrey;
+        }
+
+        @include hover {
+            color: $instap-midgrey;
+        }
+    }
+}
