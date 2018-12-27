@@ -63,7 +63,7 @@
 
                 // show a back button
 
-                echo "<p><a href='/'>&lt; Back</a></p>";
+                echo $twig->render('back-button.twig');
 
             }
 
