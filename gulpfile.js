@@ -55,11 +55,18 @@ function styles() {
     .pipe(gulp.dest(dist))
 }
 
+function images() {
+    return gulp.src([
+        'node_modules/material-design-lite/dist/images/**/*'
+    ])
+    .pipe(gulp.dest(dist + 'images'));
+}
+
 function watch() {
     return gulp.watch(src + 'scss/**/*.scss', gulp.parallel('styles'));
 }
 
-const build = gulp.parallel(clean, scripts, styles);
+const build = gulp.series(clean, scripts, styles, images);
 
 exports.default = build;
 exports.build = build;

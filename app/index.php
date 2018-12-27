@@ -17,6 +17,10 @@
 
         try {
 
+            // show loading bar
+
+            echo $twig->render('loading-bar.twig');
+
             // Get access token
 
             $access_token = $connection->oauth('oauth/access_token', $config);
