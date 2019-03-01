@@ -28,5 +28,8 @@ $loader = new Twig_Loader_Filesystem('../templates');
 
 $twig = new Twig_Environment($loader, array(
     'cache' => '../templates/.cache',
-    'debug' => false
+    'debug' => true
 ));
+
+// Add dump() function for debugging
+$twig->addExtension(new Twig_Extension_Debug());
