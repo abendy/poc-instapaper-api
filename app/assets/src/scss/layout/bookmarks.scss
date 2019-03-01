@@ -1,17 +1,30 @@
 // Bookmarks
 
-.paper {
-    color: $instap-midgrey;
+li {
+    max-width: 50%;
+}
 
-    a {
-        color: $instap-midgrey;
+#highlights {
+    background-color: lightgray;
+    padding: 1rem 0 3rem;
+    position: fixed;
+    right: 1rem;
+    top: 5rem;
+    width: 30%;
+}
 
-        &:visited {
-            color: $instap-midgrey;
-        }
+blockquote {
+    line-height: 2rem;
 
-        @include hover {
-            color: $instap-midgrey;
-        }
+    &::before,
+    &::after {
+        content: "\"";
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    &::after {
+        position: relative;
+        top: 2rem;
     }
 }

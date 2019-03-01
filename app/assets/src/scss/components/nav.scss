@@ -4,5 +4,9 @@
     background-color: $instap-black;
     color: $white;
     padding: 1rem;
-    width: 100%;
+    width: calc(100% - 2rem);
+}
+
+#username {
+    float: right;
 }

@@ -1948,7 +1948,7 @@ body {
   background-color: #fff;
   color: #111;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.14286rem;
+  font-size: 1.28571rem;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   overflow-x: hidden;
@@ -1987,14 +1987,32 @@ img {
   height: auto;
   max-width: 100%; }
 
-.paper {
-  color: #7a7a7a; }
-  .paper a {
-    color: #7a7a7a; }
-    .paper a:visited {
-      color: #7a7a7a; }
-    .paper a:hover, .paper a:active, .paper a:focus {
-      color: #7a7a7a; }
+li {
+  max-width: 50%; }
+
+#highlights {
+  background-color: lightgray;
+  padding: 1rem 0 3rem;
+  position: fixed;
+  right: 1rem;
+  top: 5rem;
+  width: 30%; }
+
+blockquote {
+  line-height: 2rem; }
+  blockquote::before, blockquote::after {
+    content: "\"";
+    font-size: 3rem;
+    font-weight: bold; }
+  blockquote::after {
+    position: relative;
+    top: 2rem; }
+
+#text {
+  margin: 0 auto;
+  width: 600px; }
+  #text .highlight {
+    background-color: lightblue; }
 
 #loading-bar {
   width: 100%; }
@@ -2009,7 +2027,10 @@ img {
   background-color: #111;
   color: #fff;
   padding: 1rem;
-  width: 100%; }
+  width: calc(100% - 2rem); }
+
+#username {
+  float: right; }
 
 #back-button {
   margin-top: 1rem;
