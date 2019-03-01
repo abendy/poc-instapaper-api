@@ -20,6 +20,7 @@
 
 blockquote {
     line-height: 2rem;
+    position: relative;
 
     &::before,
     &::after {
@@ -29,7 +30,7 @@ blockquote {
     }
 
     &::after {
-        position: relative;
-        top: 2rem;
+        position: absolute;
+        top: -1rem;
     }
 }

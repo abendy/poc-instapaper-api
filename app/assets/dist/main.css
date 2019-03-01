@@ -2002,14 +2002,15 @@ img {
   width: 40%; }
 
 blockquote {
-  line-height: 2rem; }
+  line-height: 2rem;
+  position: relative; }
   blockquote::before, blockquote::after {
     content: "\"";
     font-size: 3rem;
     font-weight: bold; }
   blockquote::after {
-    position: relative;
-    top: 2rem; }
+    position: absolute;
+    top: -1rem; }
 
 #text {
   margin: 0 auto;
