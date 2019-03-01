@@ -77,6 +77,8 @@
 
             $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
 
+            $highlights = [];
+
             foreach ($bookmarks['highlights'] as $highlight) {
 
                 $highlights[$highlight->bookmark_id][$highlight->highlight_id] = $highlight;
