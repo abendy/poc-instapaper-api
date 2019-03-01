@@ -2010,7 +2010,7 @@ blockquote {
     font-weight: bold; }
   blockquote::after {
     position: absolute;
-    top: -1rem; }
+    bottom: -1rem; }
 
 #text {
   margin: 0 auto;
