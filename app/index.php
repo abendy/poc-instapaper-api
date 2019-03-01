@@ -98,7 +98,7 @@
 
         $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
 
-        if (!empty($fid)) {
+        if (isset($fid)) {
             $parameters = array('limit' => 500, 'folder_id' => $fid);
 
             // Make the bookmark listing API call
