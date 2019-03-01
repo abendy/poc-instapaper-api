@@ -1988,8 +1988,9 @@ img {
   max-width: 100%; }
 
 #bookmarks {
-  padding-top: 6rem; }
+  padding-top: 10rem; }
   #bookmarks li {
+    margin: 2rem;
     max-width: 50%; }
 
 #highlights {
