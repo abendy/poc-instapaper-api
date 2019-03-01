@@ -17,25 +17,3 @@
     top: 6rem;
     width: 40%;
 }
-
-blockquote {
-    line-height: 2rem;
-    position: relative;
-
-    &::before,
-    &::after {
-        content: "\"";
-        font-size: 3rem;
-        font-weight: bold;
-    }
-
-    &::before {
-        margin-right: 0.5rem;
-    }
-
-    &::after {
-        margin-left: 0.5rem;
-        position: absolute;
-        bottom: -1rem;
-    }
-}

@@ -2001,20 +2001,6 @@ img {
   top: 6rem;
   width: 40%; }
 
-blockquote {
-  line-height: 2rem;
-  position: relative; }
-  blockquote::before, blockquote::after {
-    content: "\"";
-    font-size: 3rem;
-    font-weight: bold; }
-  blockquote::before {
-    margin-right: 0.5rem; }
-  blockquote::after {
-    margin-left: 0.5rem;
-    position: absolute;
-    bottom: -1rem; }
-
 #text {
   margin: 0 auto;
   padding-top: 6rem;
@@ -2024,15 +2010,6 @@ blockquote {
     width: 100%; }
   #text .highlight {
     background-color: darkkhaki; }
-
-#loading-bar {
-  width: 100%; }
-
-@supports (-webkit-appearance: none) {
-  .mdl-progress:not(.mdl-progress--indeterminate):not(.mdl-progress--indeterminate) > .auxbar,
-  .mdl-progress:not(.mdl-progress__indeterminate):not(.mdl-progress__indeterminate) > .auxbar {
-    -webkit-mask: url("images/buffer.svg?embed");
-            mask: url("images/buffer.svg?embed"); } }
 
 nav {
   background-color: #111;
@@ -2089,3 +2066,17 @@ nav {
   margin-top: 6rem;
   margin-left: 1rem;
   position: absolute; }
+
+blockquote {
+  line-height: 2rem;
+  position: relative; }
+  blockquote::before, blockquote::after {
+    content: "\"";
+    font-size: 3rem;
+    font-weight: bold; }
+  blockquote::before {
+    margin-right: 0.5rem; }
+  blockquote::after {
+    margin-left: 0.5rem;
+    position: absolute;
+    bottom: -1rem; }
