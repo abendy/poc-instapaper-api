@@ -96,9 +96,10 @@
 
         // Set the API call parameters
 
-        $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
+        if (!isset($_GET['bid'])) {
 
-        if (isset($fid)) {
+            $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
+
             $parameters = array('limit' => 500, 'folder_id' => $fid);
 
             // Make the bookmark listing API call
