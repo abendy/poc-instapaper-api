@@ -1945,7 +1945,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #7a7a7a;
+  background-color: #fff;
   color: #111;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1.42857rem;
@@ -2057,6 +2057,7 @@ nav {
   nav a:link,
   nav a:visited {
     color: #fff;
+    cursor: pointer;
     font-size: 1rem; }
 
 #hamburger {
