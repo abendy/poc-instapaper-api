@@ -72,22 +72,42 @@
                 echo $twig->render('back-button.twig');
 
             }
+        if (!empty($fid)) {
+
+            $parameters = array('limit' => 500, 'folder_id' => $fid);
 
             // make the bookmark listing api call
 
             $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
 
+            foreach ($bookmarks['highlights'] as $highlight) {
+
+                $highlights[$highlight->bookmark_id][$highlight->highlight_id] = $highlight;
+
+            }
+
+            echo $twig->render('highlights.twig', array('highlights' => $highlights));
+
             // show the bookmarks
 
-            foreach ($bookmarks as $i => $bookmark) {
+            foreach ($bookmarks['bookmarks'] as $i => $bookmark) {
 
                 unset($bookmarks[$i]);
+
+                // extract((array) $bookmark);
 
                 $bookmarkArr = (array) $bookmark;
 
                 extract($bookmarkArr);
 
                 if (isset($bookmark_id) && isset($title) && isset($url)) {
+
+                    if (isset($highlights) && isset($highlights[$bookmark_id])) {
+
+                        $bookmark->highlights = 1;
+
+                    }
+
                     $bookmarks[] = (array) $bookmark;
                 }
 

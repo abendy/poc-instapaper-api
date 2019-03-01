@@ -1,0 +1,7 @@
+<div id="highlights">
+{% for bookmark_id, sub in highlights %}
+    {% for highlight_id, highlight in sub %}
+        <blockquote>{{ highlight.text }}</blockquote>
+    {% endfor %}
+{% endfor %}
+</div>
