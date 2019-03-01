@@ -2,9 +2,14 @@
     {% for bookmark in bookmarks %}
     <li class="mdl-list__item">
         <span class="mdl-list__item-primary-content">
-            <a href='{{ bookmark.url }}' target='_blank'>{{ bookmark.title|raw }}</a>&nbsp;<span class="paper">(<a href='https://www.instapaper.com/read/{{ bookmark.bookmark_id }}' target='_blank'>paper</a>)</span>
+            <a href='?bid={{ bookmark.bookmark_id }}'>{{ bookmark.title|raw }}</a>
+
             {% if bookmark.starred %}
             &nbsp;&nbsp;<i class="material-icons">star</i>
+            {% endif %}
+
+            {% if bookmark.highlights %}
+            &nbsp;&nbsp;<i class="material-icons">format_quote</i>
             {% endif %}
         </span>
     </li>
