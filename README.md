@@ -7,6 +7,8 @@ composer install
 
 yarn install
 
+gulp
+
 php -S localhost:8000 -t ./app
 ```
 
