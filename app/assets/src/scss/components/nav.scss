@@ -1,12 +1,73 @@
 // Nav
 
-#nav {
+nav {
     background-color: $instap-black;
     color: $white;
+    display: block;
     padding: 1rem;
     position: fixed;
     width: calc(100% - 2rem);
     z-index: 1;
+
+
+    ul {
+        background-color: $instap-black;
+        display: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+        left: 0;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 2rem;
+        position: absolute;
+        height: 80vh;
+        width: 100%;
+    }
+
+    li {
+        list-style: none;
+        margin: 0.1rem 1rem;
+    }
+
+    a:link,
+    a:visited {
+        color: $white;
+        font-size: rem(14, $base-font-size);
+    }
+}
+
+#hamburger {
+    border-radius: 12px;
+
+    &[data-power="on"] {
+        background-color: springgreen;
+        -webkit-animation: spin .1s linear;
+        -moz-animation: spin .1s linear;
+        animation: spin .1s linear;
+
+        & + ul {
+            display: flex;
+        }
+    }
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(90deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(90deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
 }
 
 #username {

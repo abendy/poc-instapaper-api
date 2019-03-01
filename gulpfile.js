@@ -26,10 +26,7 @@ function clean(cb) {
 }
 
 function scripts() {
-    return gulp.src([
-        'node_modules/material-design-lite/dist/material.js',
-        src + 'js/app.js'
-    ])
+    return gulp.src([src + 'js/app.js'])
     .pipe(sourcemaps.init())
     .pipe(concat('main.js'))
     .pipe(gulp.dest(dist))

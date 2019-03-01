@@ -1,14 +1,12 @@
-<div id="nav">
-    <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">more_vert</i>
-    </button>
+<nav>
+    <i id="hamburger" class="material-icons">menu</i>
 
-    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
-        <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
+    <ul>
+        <li>
             <a href="?fid=starred">Starred</a>
         </li>
         {% for folder in folders %}
-        <li class="mdl-menu__item">
+        <li>
             <a href='?fid={{ folder.folder_id }}'>{{ folder.display_title }}</a>
         </li>
         {% endfor %}
@@ -17,4 +15,4 @@
     <div id="username">
         <span>{{ username }}</span>
     </div>
-</div>
+</nav>
