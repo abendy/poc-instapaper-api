@@ -17,15 +17,18 @@
 
         require_once __DIR__ . '/../config/config.php';
 
+
+        // Set up authorization to API
+
         try {
 
             // Get access token
 
             $access_token = $connection->oauth('oauth/access_token', $config);
 
-            extract($access_token);
-
             // Connect to API
+
+            extract($access_token);
 
             $instapaper = new Abraham\TwitterOAuth\TwitterOAuth($consumerKey, $consumerSecret, $oauth_token, $oauth_token_secret);
 
@@ -33,22 +36,41 @@
 
         } catch (TwitterOAuthException $e) {
 
-            d($e);
+            die($e);
 
         }
 
-        // verify user
 
-        $user = $instapaper->post('account/verify_credentials');
+        // Verify user
 
-        $username = !empty($user) ? $user[0]->username : '';
+        try {
+
+            $user = $instapaper->post('account/verify_credentials');
+
+            $username = !empty($user) ? $user[0]->username : '';
+
+        } catch (TwitterOAuthException $e) {
+
+            die($e);
+
+        }
 
 
-        // show the folders
+        // Show the folders as a nav
 
-        $folders = (array) $instapaper->post('folders/list');
+        try {
+
+            $folders = (array) $instapaper->post('folders/list');
+
+        } catch (TwitterOAuthException $e) {
+
+            die($e);
+
+        }
 
         if (!empty($folders)) {
+
+            // Loop over API object and create array for rendering
 
             foreach($folders as $i => $folder) {
 
@@ -58,23 +80,40 @@
 
             }
 
+            // Render the folders as a nav
+
             echo $twig->render('nav.twig', array('folders' => $folders, 'username' => $username));
 
         }
 
-        // show a back button
+
+        // Show a back button
 
         echo $twig->render('back-button.twig');
 
-        // show the bookmarks
 
-        if (!empty($_GET['fid'])) {
+        // Show the bookmarks
 
-            $parameters = array('limit' => 500, 'folder_id' => $_GET['fid']);
+        // Set the API call parameters
 
-            // make the bookmark listing api call
+        $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
 
-            $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
+        if (!empty($fid)) {
+            $parameters = array('limit' => 500, 'folder_id' => $fid);
+
+            // Make the bookmark listing API call
+
+            try {
+
+                $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
+
+            } catch (TwitterOAuthException $e) {
+
+                die($e);
+
+            }
+
+            // Process the highlights into array: `bookmark id` > `highlight id` > data
 
             $highlights = [];
 
@@ -84,42 +123,61 @@
 
             }
 
+            // Render highlight block
+
             echo $twig->render('highlights.twig', array('highlights' => $highlights));
 
-            // show the bookmarks
+            // Process the bookmarks
+
+            // Loop over API object and create array for rendering
 
             foreach ($bookmarks['bookmarks'] as $i => $bookmark) {
 
                 unset($bookmarks[$i]);
 
-                extract((array) $bookmark);
+                $bookmark->highlights = isset($highlights) && isset($highlights[$bookmark->bookmark_id]) ? 1 : 0;
 
-                if (isset($bookmark_id) && isset($title) && isset($url)) {
-
-                    $bookmark->highlights = (isset($highlights) && isset($highlights[$bookmark_id])) ? 1 : 0;
-
-                    $bookmarks[] = (array) $bookmark;
-
-                }
+                $bookmarks[] = (array) $bookmark;
 
             }
 
+            // Render bookmarks listing
+
             echo $twig->render('bookmarks.twig', array('bookmarks' => $bookmarks));
+
         }
 
-        // show a bookmark
+        // Show a bookmark
 
         $bid = isset($_GET['bid']) ? $_GET['bid'] : 0;
 
         if (!empty($bid)) {
 
-            $parameters = array('bookmark_id' => $bid);
+            // Make the bookmark text API call
 
-            // make the bookmark listing api call
+            try {
 
-            $text = $instapaper->post('bookmarks/get_text', $parameters);
+                $text = $instapaper->post('bookmarks/get_text', array('bookmark_id' => $bid));
 
-            $highlightsArr = (array) $instapaper->post("bookmarks/$bid/highlights");
+            } catch (TwitterOAuthException $e) {
+
+                die($e);
+
+            }
+
+            // Make the bookmark highlights API call
+
+            try {
+
+                $highlightsArr = (array) $instapaper->post("bookmarks/$bid/highlights");
+
+            } catch (TwitterOAuthException $e) {
+
+                die($e);
+
+            }
+
+            // Reduce the highlights array to only include the text
 
             $highlights = array_map(function($highlight) {
 
@@ -127,9 +185,12 @@
 
             }, $highlightsArr);
 
+            // Render
+
             echo $twig->render('bookmark.twig', array('text' => $text, 'highlights' => $highlights));
 
         }
+
 
         ?>
     <script defer src="assets/dist/main.min.js"></script>
