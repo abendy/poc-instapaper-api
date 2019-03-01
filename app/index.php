@@ -99,6 +99,32 @@
             d($e);
         }
 
+
+
+
+
+        // show a bookmark
+
+        $bid = isset($_GET['bid']) ? $_GET['bid'] : 0;
+
+        if (!empty($bid)) {
+
+            $parameters = array('bookmark_id' => $bid);
+
+            // make the bookmark listing api call
+
+            $text = $instapaper->post('bookmarks/get_text', $parameters);
+
+            $highlightsArr = (array) $instapaper->post("bookmarks/$bid/highlights");
+
+            $highlights = array_map(function($highlight) {
+                return $highlight->text;
+            }, $highlightsArr);
+
+            echo $twig->render('bookmark.twig', array('text' => $text, 'highlights' => $highlights));
+
+        }
+
         ?>
         <script defer src="assets/dist/main.min.js"></script>
     </body>

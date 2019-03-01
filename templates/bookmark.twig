@@ -1,0 +1,14 @@
+{% for highlight in highlights %}
+
+    {% set text = text|replace({
+        (highlight) :
+        "<span class='highlight'>" ~ highlight ~ "</span>"
+    }) %}
+
+{% endfor %}
+
+
+
+<div id="text">
+{{ text | raw }}
+</div>
