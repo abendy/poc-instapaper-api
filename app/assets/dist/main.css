@@ -2011,6 +2011,9 @@ blockquote {
 #text {
   margin: 0 auto;
   width: 600px; }
+  #text img {
+    height: auto;
+    width: 100%; }
   #text .highlight {
     background-color: darkkhaki; }
 
