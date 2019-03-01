@@ -1987,15 +1987,17 @@ img {
   height: auto;
   max-width: 100%; }
 
-#bookmarks li {
-  max-width: 50%; }
+#bookmarks {
+  padding-top: 6rem; }
+  #bookmarks li {
+    max-width: 50%; }
 
 #highlights {
   background-color: lightgray;
   padding: 1rem 0 3rem;
   position: fixed;
   right: 1rem;
-  top: 5rem;
+  top: 6rem;
   width: 40%; }
 
 blockquote {
@@ -2010,6 +2012,7 @@ blockquote {
 
 #text {
   margin: 0 auto;
+  padding-top: 6rem;
   width: 600px; }
   #text img {
     height: auto;
@@ -2030,11 +2033,13 @@ blockquote {
   background-color: #111;
   color: #fff;
   padding: 1rem;
+  position: fixed;
   width: calc(100% - 2rem); }
 
 #username {
   float: right; }
 
 #back-button {
-  margin-top: 1rem;
-  margin-left: 1rem; }
+  margin-top: 6rem;
+  margin-left: 1rem;
+  position: absolute; }
