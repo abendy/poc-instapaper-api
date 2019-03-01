@@ -1945,10 +1945,10 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #fff;
+  background-color: #7a7a7a;
   color: #111;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1.28571rem;
+  font-size: 1.42857rem;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   overflow-x: hidden;
@@ -2012,7 +2012,7 @@ blockquote {
   margin: 0 auto;
   width: 600px; }
   #text .highlight {
-    background-color: lightblue; }
+    background-color: darkkhaki; }
 
 #loading-bar {
   width: 100%; }
