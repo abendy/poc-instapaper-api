@@ -29,7 +29,12 @@ blockquote {
         font-weight: bold;
     }
 
+    &::before {
+        margin-right: 0.5rem;
+    }
+
     &::after {
+        margin-left: 0.5rem;
         position: absolute;
         bottom: -1rem;
     }

@@ -2008,7 +2008,10 @@ blockquote {
     content: "\"";
     font-size: 3rem;
     font-weight: bold; }
+  blockquote::before {
+    margin-right: 0.5rem; }
   blockquote::after {
+    margin-left: 0.5rem;
     position: absolute;
     bottom: -1rem; }
 
@@ -2057,15 +2060,16 @@ nav {
   nav a:link,
   nav a:visited {
     color: #fff;
-    cursor: pointer;
     font-size: 1rem; }
 
 #hamburger {
-  border-radius: 12px; }
+  border-radius: 12px;
+  cursor: pointer; }
   #hamburger[data-power="on"] {
-    background-color: springgreen;
     -webkit-animation: spin .1s linear;
-    animation: spin .1s linear; }
+    animation: spin .1s linear;
+    background-color: whitesmoke;
+    color: #000; }
     #hamburger[data-power="on"] + ul {
       display: flex; }
 

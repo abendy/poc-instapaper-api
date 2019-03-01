@@ -32,19 +32,20 @@ nav {
     a:link,
     a:visited {
         color: $white;
-        cursor: pointer;
         font-size: rem(14, $base-font-size);
     }
 }
 
 #hamburger {
     border-radius: 12px;
+    cursor: pointer;
 
     &[data-power="on"] {
-        background-color: springgreen;
         -webkit-animation: spin .1s linear;
         -moz-animation: spin .1s linear;
         animation: spin .1s linear;
+        background-color: whitesmoke;
+        color: $black;
 
         & + ul {
             display: flex;
