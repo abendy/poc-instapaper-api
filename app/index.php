@@ -8,6 +8,7 @@
         <title>poc-instapaper-api</title>
 
         <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+
         <link rel="stylesheet" href="assets/dist/main.min.css">
     </head>
     <body>
@@ -15,11 +16,11 @@
 
         require_once __DIR__ . '/../config/config.php';
 
+        // show loading bar
+
+        // echo $twig->render('loading-bar.twig');
+
         try {
-
-            // show loading bar
-
-            echo $twig->render('loading-bar.twig');
 
             // Get access token
 
@@ -33,45 +34,47 @@
 
             $instapaper->setTimeouts(1200, 1200); // connection timeout, request timeout
 
-            // $user = $instapaper->post('account/verify_credentials');
+        } catch (TwitterOAuthException $e) {
 
-            // set var of `folder_id` url parameters if it exists
+            d($e);
 
-            $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
+        }
 
-            // show the folders
+        // verify user
 
-            $folders = (array) $instapaper->post('folders/list');
+        $user = $instapaper->post('account/verify_credentials');
 
-            if (!empty($folders)) {
+        $username = !empty($user) ? $user[0]->username : '';
 
-                foreach($folders as $i => $folder) {
 
-                    unset($folders[$i]);
+        // show the folders
 
-                    $folders[] = (array) $folder;
+        $folders = (array) $instapaper->post('folders/list');
 
-                }
+        if (!empty($folders)) {
 
-                echo $twig->render('nav.twig', array('folders' => $folders));
+            foreach($folders as $i => $folder) {
 
-            }
+                unset($folders[$i]);
 
-            // set the default config for the bookmark listing api call
-
-            $parameters = array('limit' => 500);
-
-            // if the `folder_id` url parameter exists add it to the config for the bookmark listing api call
-
-            if (!empty($fid)) {
-
-                $parameters['folder_id'] = $fid;
-
-                // show a back button
-
-                echo $twig->render('back-button.twig');
+                $folders[] = (array) $folder;
 
             }
+
+            echo $twig->render('nav.twig', array('folders' => $folders, 'username' => $username));
+
+        }
+
+
+        // show a back button
+
+        echo $twig->render('back-button.twig');
+
+
+        // show the bookmarks
+
+        $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
+
         if (!empty($fid)) {
 
             $parameters = array('limit' => 500, 'folder_id' => $fid);
@@ -115,8 +118,6 @@
 
             echo $twig->render('bookmarks.twig', array('bookmarks' => $bookmarks));
 
-        } catch (TwitterOAuthException $e) {
-            d($e);
         }
 
 
@@ -147,5 +148,11 @@
 
         ?>
         <script defer src="assets/dist/main.min.js"></script>
+        <script>
+        document.querySelector('#loading-bar').addEventListener('mdl-componentupgraded', function() {
+            // console.log(this.MaterialProgress);
+            // this.MaterialProgress.setProgress(44);
+        });
+        </script>
     </body>
 </html>
