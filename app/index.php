@@ -89,7 +89,9 @@
 
         // Show a back button
 
-        echo $twig->render('back-button.twig');
+        if (!empty($_GET)) {
+            echo $twig->render('back-button.twig');
+        }
 
 
         // Show the bookmarks
