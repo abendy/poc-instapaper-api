@@ -11,8 +11,10 @@
 
         if (dataPower == 'on') {
             this.removeAttribute("data-power");
+            this.textContent = 'menu';
         } else {
             this.setAttribute("data-power", "on");
+            this.textContent = 'close';
         }
 
     });
