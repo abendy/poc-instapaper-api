@@ -69,7 +69,8 @@ function images() {
 }
 
 function watch() {
-    return gulp.watch(src + 'scss/**/*.scss', gulp.parallel('styles'));
+    gulp.watch(src + 'scss/**/*.scss', styles);
+    gulp.watch(src + 'js/**/*.js', scripts);
 }
 
 const build = gulp.series(clean, scripts, styles, images);
