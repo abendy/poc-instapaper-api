@@ -8,5 +8,9 @@
 {% endfor %}
 
 <div id="text">
-{{ text | raw }}
+    {% if title %}
+    <h2>{{ title }}</h2>
+    {% endif %}
+
+    {{ text | raw }}
 </div>

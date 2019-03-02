@@ -140,6 +140,8 @@
 
                 $bookmark->highlights = isset($highlights) && isset($highlights[$bookmark->bookmark_id]) ? 1 : 0;
 
+                $bookmark->title_encoded = base64_encode($bookmark->title);
+
                 $bookmarks[] = (array) $bookmark;
 
             }
@@ -155,6 +157,10 @@
         $bid = isset($_GET['bid']) ? $_GET['bid'] : 0;
 
         if (!empty($bid)) {
+
+            // Get the title from the coded url string
+
+            $title = !empty($_GET['title']) ? base64_decode($_GET['title']) : null;
 
             // Make the bookmark text API call
 
@@ -190,7 +196,7 @@
 
             // Render
 
-            echo $twig->render('bookmark.twig', array('text' => $text, 'highlights' => $highlights));
+            echo $twig->render('bookmark.twig', array('title' => $title, 'text' => $text, 'highlights' => $highlights));
 
         }
 

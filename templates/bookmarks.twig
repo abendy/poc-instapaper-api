@@ -3,7 +3,7 @@
         {% for bookmark in bookmarks %}
         {% if bookmark.title %}
         <li>
-            <a href='?bid={{ bookmark.bookmark_id }}'>{{ bookmark.title|raw }}</a>
+            <a href='?bid={{ bookmark.bookmark_id }}&amp;title={{ bookmark.title_encoded }}'>{{ bookmark.title|raw }}</a>
 
             {% if bookmark.starred %}
             &nbsp;&nbsp;<i class="material-icons">star</i>
