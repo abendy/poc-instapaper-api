@@ -9,15 +9,19 @@ blockquote {
         content: "\"";
         font-size: 3rem;
         font-weight: bold;
+        position: absolute;
     }
 
     &::before {
-        margin-right: 0.5rem;
+        left: -2rem;
     }
 
     &::after {
-        margin-left: 0.5rem;
-        position: absolute;
         bottom: -1rem;
+        right: -1rem;
+    }
+
+    p {
+        margin: 0 !important;
     }
 }
