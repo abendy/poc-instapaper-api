@@ -1,4 +1,6 @@
 {
+    "name": "poc-instapaper-api",
+    "description": "localhost server + UI for Instapaper API",
     "require": {
         "abraham/twitteroauth": "^0.7.2",
         "twig/twig": "^2.6",
