@@ -11,8 +11,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 
-const src = 'src/';
-const dist = 'app/assets/dist/';
+const src = 'app/src/';
+const dist = 'app/dist/';
 
 /* Material Design Lite location */
 const mdl = 'node_modules/material-design-lite/';

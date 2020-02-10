@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
 
-    <link rel="stylesheet" href="assets/dist/main.min.css">
+    <link rel="stylesheet" href="dist/main.min.css">
 </head>
 
 <body>
@@ -202,7 +202,7 @@
 
 
         ?>
-    <script defer src="assets/dist/main.min.js"></script>
+    <script defer src="dist/main.min.js"></script>
 </body>
 
 </html>

@@ -5,4 +5,4 @@ node_modules/
 templates/.cache/
 vendor/
 config/credentials.json
-app/assets/dist/
+app/dist/
