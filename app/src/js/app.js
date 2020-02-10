@@ -16,7 +16,6 @@
             this.setAttribute("data-power", "on");
             this.textContent = 'close';
         }
-
     });
 
 })(this, this.document);
