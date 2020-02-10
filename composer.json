@@ -1,8 +1,20 @@
 {
     "name": "poc-instapaper-api",
     "description": "localhost server + UI for Instapaper API",
+    "repositories": [{
+        "type": "package",
+        "package": {
+            "name": "abendy/instapaperoauth",
+            "version": "0.1",
+            "source": {
+                "url": "https://github.com/abendy/instapaperoauth.git",
+                "type": "git",
+                "reference": "development"
+            }
+        }
+    }],
     "require": {
-        "abraham/twitteroauth": "^0.7.2",
+        "abendy/instapaperoauth": "0.1",
         "twig/twig": "^2.6",
         "predis/predis": "^1.1"
     },
