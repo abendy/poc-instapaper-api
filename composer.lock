@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63d671396a171cb4da3b12225511b4e4",
+    "content-hash": "ffc76610c8092f6983f7b920bd5ff586",
     "packages": [
         {
             "name": "abendy/instapaperoauth",
@@ -14,7 +14,12 @@
                 "url": "https://github.com/abendy/instapaperoauth.git",
                 "reference": "development"
             },
-            "type": "library"
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Abendy\\InstapaperOauth\\": "src"
+                }
+            }
         },
         {
             "name": "predis/predis",
@@ -516,6 +521,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-curl": "*"
+    },
     "platform-dev": []
 }

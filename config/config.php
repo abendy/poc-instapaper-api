@@ -6,11 +6,9 @@ if (!session_id()) {
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-# https://github.com/abendy/instapaperoauth
-use Abraham\TwitterOAuth\TwitterOAuth;
+use Abendy\InstapaperOauth\InstapaperOauth;
 
 // Credentials
-
 $creds = __DIR__ . '/credentials.json';
 
 if (file_exists($creds)) {
@@ -20,7 +18,7 @@ if (file_exists($creds)) {
 
     extract($config);
 
-    $connection = new TwitterOAuth($consumerKey, $consumerSecret);
+    $connection = new InstapaperOauth($consumerKey, $consumerSecret);
 }
 
 // Twig

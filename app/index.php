@@ -23,10 +23,10 @@
             extract($access_token);
 
             // Connect to API
-            $instapaper = new Abraham\TwitterOAuth\TwitterOAuth($consumerKey, $consumerSecret, $oauth_token, $oauth_token_secret);
+            $instapaper = new Abendy\InstapaperOauth\InstapaperOauth($consumerKey, $consumerSecret, $oauth_token, $oauth_token_secret);
 
             $instapaper->setTimeouts(1200, 1200); // connection timeout, request timeout
-        } catch (TwitterOAuthException $e) {
+        } catch (InstapaperOauthException $e) {
             die($e);
         }
 
@@ -35,14 +35,14 @@
             $user = $instapaper->post('account/verify_credentials');
 
             $username = !empty($user) ? $user[0]->username : '';
-        } catch (TwitterOAuthException $e) {
+        } catch (InstapaperOauthException $e) {
             die($e);
         }
 
         // Show the folders as a nav
         try {
             $folders = (array) $instapaper->post('folders/list');
-        } catch (TwitterOAuthException $e) {
+        } catch (InstapaperOauthException $e) {
             die($e);
         }
 
@@ -66,14 +66,14 @@
         // Show the bookmarks
         // Set the API call parameters
         if (!isset($_GET['bid'])) {
-            $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
-
-            $parameters = array('limit' => 500, 'folder_id' => $fid);
-
             // Make the bookmark listing API call
             try {
+                $fid = isset($_GET['fid']) ? $_GET['fid'] : 0;
+
+                $parameters = array('limit' => 500, 'folder_id' => $fid);
+
                 $bookmarks = (array) $instapaper->post('bookmarks/list', $parameters);
-            } catch (TwitterOAuthException $e) {
+            } catch (InstapaperOauthException $e) {
                 die($e);
             }
 
@@ -113,14 +113,14 @@
             // Make the bookmark text API call
             try {
                 $text = $instapaper->post('bookmarks/get_text', array('bookmark_id' => $bid));
-            } catch (TwitterOAuthException $e) {
+            } catch (InstapaperOauthException $e) {
                 die($e);
             }
 
             // Make the bookmark highlights API call
             try {
                 $highlightsArr = (array) $instapaper->post("bookmarks/$bid/highlights");
-            } catch (TwitterOAuthException $e) {
+            } catch (InstapaperOauthException $e) {
                 die($e);
             }
 
